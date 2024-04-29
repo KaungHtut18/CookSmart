@@ -79,7 +79,7 @@ class _InstructionPageState extends State<InstructionPage> {
                           Padding(
                             padding: const EdgeInsets.only(left: 24, right: 24),
                             child: CircleAvatar(
-                              backgroundColor: Colors.grey,
+                              backgroundColor: Colors.green,
                               child: const Icon(Icons.check, color: Colors.white),
                             ),
                           ),
@@ -97,7 +97,7 @@ class _InstructionPageState extends State<InstructionPage> {
                                   children: [
                                     CircleAvatar(
                                       backgroundColor: isTapped[i]
-                                          ? Colors.grey
+                                          ? Colors.green
                                           : const Color.fromRGBO(238, 90, 37, 1),
                                       child: isTapped[i]
                                           ? const Icon(Icons.check, color: Colors.white)
@@ -154,7 +154,7 @@ class _InstructionPageState extends State<InstructionPage> {
                           padding: const EdgeInsets.only(left: 24, right: 24),
                           child: CircleAvatar(
                               backgroundColor: allStepsCompleted
-                                  ? const Color.fromRGBO(238, 90, 37, 1)
+                                  ? Colors.green
                                   : Colors.grey,
                               child: const Icon(Icons.check, color: Colors.white)
                           ),

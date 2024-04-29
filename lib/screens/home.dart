@@ -21,12 +21,14 @@ class _HomeState extends State<Home> {
   final user = FirebaseAuth.instance.currentUser!;
   String _searchQuery = '';
 
+  //we have to dispose it cuz it takes too much memory
   @override
   void dispose() {
     _searchController.dispose();
     super.dispose();
   }
 
+  //to greet user
   String greetUser() {
     var now = DateTime.now();
 

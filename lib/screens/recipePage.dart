@@ -23,14 +23,6 @@ class RecipeDetailPage extends StatefulWidget {
 class _RecipeDetailPageState extends State<RecipeDetailPage> {
   final FirestoreServices fireStoreService = FirestoreServices();
   late DocumentSnapshot document;
-  late FavoriteState favoriteState; // Create FavoriteState instance
-
-  @override
-  void initState() {
-    super.initState();
-    // Initialize favoriteState
-    favoriteState = FavoriteState();
-  }
 
   final user = FirebaseAuth.instance.currentUser!;
 
@@ -147,7 +139,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage> {
                                     instructions: instructions,
                                     isFavorite : isFavorite,
                                     stepTitle: stepTitle),
-                                favoriteState: favoriteState)
+                               )
                           ],
                         ),
                       ),

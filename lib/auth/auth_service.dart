@@ -49,10 +49,12 @@ class AuthService {
       await FirebaseAuth.instance.currentUser!.updateDisplayName(name);
       // ignore: deprecated_member_use
       await FirebaseAuth.instance.currentUser!.updateEmail(email);
+      //save user information
       await FirestoreServices.saveUser(name, email, cred.user!.uid);
 
       return cred.user;
     } on FirebaseAuthException catch (e) {
+      //if email is aldy registered
       if (e.code == 'email-already-in-use') {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Text(
@@ -95,6 +97,7 @@ class AuthService {
 
   Future<void> signout() async {
     try {
+      //logout
       await _auth.signOut();
     } catch (e) {
       log('Something went wrong!');

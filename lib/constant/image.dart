@@ -12,3 +12,6 @@ const String logo = "images/transparent.png";
 
 //home bg
 const String back_ground = "images/header_background.png";
+
+//feedback
+const String feedBack = "images/feedback.png";

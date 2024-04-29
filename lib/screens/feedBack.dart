@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cookbook/screens/bottomNav.dart';
-import '../auth/firebaseFunctions.dart'; // Import your FirestoreServices class
+import '../auth/firebaseFunctions.dart';
+import 'package:cookbook/constant/image.dart';
 
 class FeedBackPage extends StatefulWidget {
   final String recipeId;
@@ -69,7 +70,7 @@ class _FeedBackPageState extends State<FeedBackPage> {
               padding: const EdgeInsets.symmetric(
                 horizontal: 40,
               ),
-              child: Image.asset("images/feedback.png"),
+              child: Image.asset(feedBack),
             ),
             const Text(
               "Give Feedback",

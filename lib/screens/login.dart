@@ -48,14 +48,14 @@ class _LogInState extends State<LogIn> {
       } catch (e) {
         //handle login errors
         print('Login error: $e');
-        //optionally, show an error to user
+        //show an error to user
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Login failed. Please try again.'),
           duration: Duration(seconds: 3),
         ));
       } finally {
         setState(() {
-          isLoading = false; // Hide CircularProgressIndicator
+          isLoading = false; //Hide CircularProgressIndicator
         });
       }
     }

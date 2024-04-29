@@ -28,7 +28,9 @@ class _BottomNavState extends State<BottomNav> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      //show the selected page
       body: widgetOptions[_selectedIndex],
+      //bottom navigation bar
       bottomNavigationBar: Container(
         height: 75,
         color: const Color.fromRGBO(255, 238, 232, 1),

@@ -19,6 +19,7 @@ class _LikesPageState extends State<LikesPage> {
     final user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
+      //app bar
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0,
@@ -31,26 +32,34 @@ class _LikesPageState extends State<LikesPage> {
         ),
         centerTitle: false,
       ),
+
+      //user's favorite list
       body: StreamBuilder(
+        //get all wishlist by userid
         stream: FirestoreServices.getUserWishlist(user!.uid),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          //error handling
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            //if there is no favorites, show message
             return Center(
               child: Text(
                 'No Favorite(s) Yet',
                 style: TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
               ),
             );
-          } else {
+          }
+          //if there is any we will show in list view
+          else {
             final items = snapshot.data!.docs;
             return ListView.builder(
               itemCount: items.length,
               padding: EdgeInsets.all(12),
               itemBuilder: (context, index) {
-                DocumentSnapshot document = items[index];
+                DocumentSnapshot document = items[index];//Get the document snapshot at the current index
 
+                // Extract data from the document
                 Map<String, dynamic> data =
                     document.data() as Map<String, dynamic>;
                 bool update = data['isFavorite'];
@@ -79,15 +88,18 @@ class _LikesPageState extends State<LikesPage> {
                         ],
                       ),
                       child: ListTile(
+                        //cached image with lazy loading
                         leading: CachedNetworkImage(
                           imageUrl: data['imageUrl'],height: 40,
                           placeholder: (context, url) => CircularProgressIndicator(color: Colors.white,),
                           errorWidget: (context, url, error) => Icon(Icons.error),
                         ),
+                        //recipe's name
                         title: Text(
                           data['name'],
                           style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
                         ),
+                        //cuisine
                         subtitle: Text(
                           data['cuisine'],
                           style: const TextStyle(fontSize: 12),
@@ -100,8 +112,6 @@ class _LikesPageState extends State<LikesPage> {
                             });
                             // remove from wishlist functionality
                             FirestoreServices.removeFromWishlist(userId: user.uid, recipeId: document.id);
-                            // FirestoreServices.updateFavorite(update, document.id);
-                            // print(update);
                           },
                         ),
                       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../model/favorite_state.dart';
 import '../model/recipe.dart';
 import '../auth/firebaseFunctions.dart';
@@ -7,12 +6,10 @@ import '../auth/firebaseFunctions.dart';
 class FavoriteButton extends StatefulWidget {
   final String userId;
   final Recipe recipe;
-  final FavoriteState favoriteState;
 
   const FavoriteButton({
     required this.userId,
     required this.recipe,
-    required this.favoriteState,
   });
 
   @override
@@ -25,7 +22,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
   @override
   void initState() {
     super.initState();
-    // Check if the recipe is in the user's wishlist when the widget initializes
+    // Check if the recipe is in the user's wishlist
     _checkIfFavorite();
   }
 

@@ -56,6 +56,7 @@ class _RecipeListState extends State<RecipeList> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: GestureDetector(
+        //navigate to recipe detail page based on recipe id
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
@@ -89,6 +90,7 @@ class _RecipeListState extends State<RecipeList> {
                   color: Colors.grey[200],
                   child: widget.imageUrl.isNotEmpty
                       ? Center(
+                    //cached image
                         child: CachedNetworkImage(
                             imageUrl: widget.imageUrl, fit: BoxFit.fill,
                             placeholder: (context, url) => CircularProgressIndicator(color: Colors.white,),
@@ -103,6 +105,7 @@ class _RecipeListState extends State<RecipeList> {
                   ),
                 ),
               ),
+
               // Name
               Padding(
                 padding: const EdgeInsets.only(top: 8.0, left: 10.0, right: 8.0),
@@ -114,6 +117,7 @@ class _RecipeListState extends State<RecipeList> {
                   ),
                 ),
               ),
+
               // Duration
               Padding(
                 padding: const EdgeInsets.only(left: 10),
@@ -146,7 +150,6 @@ class _RecipeListState extends State<RecipeList> {
                         stepTitle: widget.stepTitle,
                         ingredients: widget.ingredients,
                         instructions: widget.instructions),
-                        favoriteState: favoriteState,
                     )
                   ],
                 ),

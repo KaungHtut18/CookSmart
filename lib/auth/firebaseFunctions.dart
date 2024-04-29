@@ -65,10 +65,11 @@ class FirestoreServices {
         .doc(userId)
         .collection('wishlist')
         .orderBy('timestamp',descending: true).snapshots();
+    //show all user's wishlist in descending
     return wishlistStream;
   }
 
-  //Read: Get all recipes from database
+  //Get all recipes from database
   Stream<QuerySnapshot> getAllRecipes() {
     final recipesStream =
     recipes.orderBy('name', descending: false).snapshots();
@@ -102,12 +103,6 @@ class FirestoreServices {
       'ratings': newTotalRatings,
       'sumRatings': newSumRatings,
       'averageRating': newAverageRating,
-    });
-  }
-
-  static Future<void> updateFavorite(bool isFavorite, String recipeId,) async{
-    return await FirebaseFirestore.instance.collection('recipes').doc(recipeId).update({
-      'isFavorite' : isFavorite
     });
   }
 }
