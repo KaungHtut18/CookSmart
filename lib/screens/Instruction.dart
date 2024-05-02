@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cookbook/auth/firebaseFunctions.dart';
 import 'package:cookbook/screens/feedBack.dart';
-import 'package:cookbook/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

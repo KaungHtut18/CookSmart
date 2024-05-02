@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Recipe {
   final String id;
   final String name;
@@ -13,6 +11,7 @@ class Recipe {
   final List<String> ingredients;
   final List<String> instructions;
 
+  //constructor
   Recipe({
     required this.id,
     required this.name,

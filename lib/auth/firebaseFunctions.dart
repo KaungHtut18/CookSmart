@@ -72,7 +72,7 @@ class FirestoreServices {
   //Get all recipes from database
   Stream<QuerySnapshot> getAllRecipes() {
     final recipesStream =
-    recipes.orderBy('name', descending: false).snapshots();
+    recipes.orderBy('averageRating', descending: true).snapshots();
     return recipesStream;
   }
 
