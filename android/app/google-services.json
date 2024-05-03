@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "896235731512-l37n7d5ocpjor0c36jht2nukldjbk913.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.techkitchen.cookbook",
+            "certificate_hash": "3cd077988a8b0552182fe0ea679671b4d9c66e86"
+          }
+        },
+        {
           "client_id": "896235731512-uvcqart56od8scqc4cl8hegtvpmdc0q2.apps.googleusercontent.com",
           "client_type": 3
         }
