@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cookbook/constant/image.dart';
+import 'package:cookbook/constant/color.dart';
 
 import '../auth/firebaseFunctions.dart';
 
@@ -129,7 +130,7 @@ class _HomeState extends State<Home> {
             stream: _firestoreService.getAllRecipes(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
+                return Center(child: CircularProgressIndicator(color: primaryColor,));
               } else if (snapshot.hasError) {
                 return Center(child: Text('Error: ${snapshot.error}'));
               } else if (!snapshot.hasData) {

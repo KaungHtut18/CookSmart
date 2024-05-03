@@ -10,31 +10,28 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthService {
   final _auth = FirebaseAuth.instance;
 
-  Future<UserCredential?> loginWithGoogle() async {
-    try {
-      //interactive sign in process
-      final googleUser = await GoogleSignIn().signIn();
-      //obtain auth details
-      final googleAuth = await googleUser?.authentication;
-      //create a new credential for user
-      final cred = GoogleAuthProvider.credential(
-          idToken: googleAuth?.idToken, accessToken: googleAuth?.accessToken);
+  Future<UserCredential?> signInWithGoogle(BuildContext context) async {
+    try{
+      // Trigger the authentication flow
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-      //sign in
-      final userCredential = await _auth.signInWithCredential(cred);
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
-      if (userCredential != null) {
-        final user = userCredential.user;
-        if (user != null) {
-          // Save user data to Firestore
-          await FirestoreServices.saveUser(
-              user.displayName ?? '', user.email ?? '', user.uid);
-        }
-      }
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
 
-      return userCredential;
-    } catch (e) {
-      print(e.toString());
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    }
+    catch (e){
+      // Handle other types of exceptions
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('An error occurred: ${e.toString()}')),
+      );
     }
     return null;
   }

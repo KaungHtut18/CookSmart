@@ -127,7 +127,7 @@ class _LogInState extends State<LogIn> {
                               setState(() {
                                 isLoading = true;
                               });
-                              await _auth.loginWithGoogle();
+                              await _auth.signInWithGoogle(context);
                               setState(() {
                                 isLoading = false;
                               });

@@ -4,6 +4,7 @@ import 'package:cookbook/components/CustomButton.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cookbook/constant/color.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -135,6 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             TextButton(
                                 onPressed: () async {
                                   await auth.signout();
+                                  await GoogleSignIn().signOut();
                                   // user.delete();
                                   Navigator.pop(context);
                                 },
