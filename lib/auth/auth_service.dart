@@ -24,8 +24,19 @@ class AuthService {
         idToken: googleAuth?.idToken,
       );
 
+      // Sign in with the credential
+      final userCredential =
+      await FirebaseAuth.instance.signInWithCredential(credential);
+
+      // Save user information to Firestore
+      await FirestoreServices.saveUser(
+        userCredential.user!.displayName ?? "",
+        userCredential.user!.email ?? "",
+        userCredential.user!.uid,
+      );
+
       // Once signed in, return the UserCredential
-      return await FirebaseAuth.instance.signInWithCredential(credential);
+      return userCredential;
     }
     catch (e){
       // Handle other types of exceptions
