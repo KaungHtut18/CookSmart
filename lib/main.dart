@@ -1,9 +1,7 @@
 import 'package:cookbook/auth/wrapper.dart';
-import 'package:cookbook/model/favorite_state.dart';
 import 'package:cookbook/screens/OnBoardingScreen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
@@ -28,13 +26,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-        create: (context) => FavoriteState(),
-        child: MaterialApp(
+    return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'cooksmart',
           home: isViewed != 0 ? OnBoardingScreen() : Wrapper(),
-        ),);
+    );
   }
 }
 
