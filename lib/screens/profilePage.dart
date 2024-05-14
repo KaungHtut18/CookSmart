@@ -30,7 +30,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SafeArea(
         child: Container(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding: const EdgeInsets.only(
